@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Number</title>
+    <title>Solution</title>
     <style>
 
         body{
@@ -25,6 +25,7 @@
             display: flex;
             /* text-align: center; */
             justify-content: space-around ;
+            align-items: center;
             padding:10px ;
             color: rgba(253, 0, 253, 0.822);
         }
@@ -33,6 +34,8 @@
             display: inline-block;
            background-color: black;
             font-size: 19px;
+            height: 60px;
+            width: 100px;
             font-weight: bolder;
             color: crimson;
         }
@@ -42,11 +45,12 @@
             margin: 20px auto;
             display: none;
             text-align: center;
-            font-size: 18px;
+            font-size: 25px;
             color: red;
             /* display: none; */
             box-shadow: 0px 0px 20px rgb(250, 84, 84);
             margin: 30px auto;
+            padding: 20px ;
             width: 90%;
         }
         
@@ -54,10 +58,11 @@
             text-align: center;
             border: 2px solid green;
             box-shadow: 0px 0px 20px rgb(82, 180, 2);
-            font-size: 20px;
+            font-size: 29px;
             color: green;
             display: none;
             margin: 30px auto;
+            padding: 20px ;
             width: 90%;
         }
         
@@ -90,12 +95,21 @@
             display: none;
         }
 
+        @media (max-width:800px) {
+            .hd h1{
+                font-size: 22px
+            }
+            .scr, .score h1{
+                padding: 10px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="hd"><h1>GUESS - THE - COMPUTER'S - NUMBER - BTW - 1 TO 100</h1>
+    <div class="hd"><h1>GUESS  THE  COMPUTER'S  NUMBER  BTW  1 TO 100</h1>
     <button class="btt" onclick="bton()">DARK</button>
     </div>
 
@@ -146,9 +160,9 @@
                 
                 if (inp === a) {
                     alert("Correct!");
-                    document.querySelector('.score').innerHTML = `<h1>Your score is: ${score}. You guessed the number in ${100 - score} attempts.</h1>`;
+                    document.querySelector('.score').innerHTML = `Your score is: ${score}. You guessed the number in ${100 - score} attempts.`;
                     document.querySelector('.score').style.display='block';
-                    document.querySelector('.scr').innerHTML = `<h2>computer guess : ${a}</h2>`;
+                    document.querySelector('.scr').innerHTML = `computer guess : ${a}`;
                     document.querySelector('.scr').style.display='block';
                     break;
                 } else if (inp > a) {
