@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution</title>
+    <style>
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+
+        .hd {
+            margin: 30px auto;
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid darkorange;
+            box-shadow: 0px 0px 40px orange;
+            display: flex;
+            /* text-align: center; */
+            justify-content: space-around ;
+            padding:10px ;
+            color: rgba(253, 0, 253, 0.822);
+        }
+        
+        .btt{
+            display: inline-block;
+           background-color: black;
+            font-size: 19px;
+            font-weight: bolder;
+            color: crimson;
+        }
+
+        .scr {
+            border: 2px solid red;
+            margin: 20px auto;
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: red;
+            /* display: none; */
+            box-shadow: 0px 0px 20px rgb(250, 84, 84);
+            margin: 30px auto;
+            width: 90%;
+        }
+        
+        .score {
+            text-align: center;
+            border: 2px solid green;
+            box-shadow: 0px 0px 20px rgb(82, 180, 2);
+            font-size: 20px;
+            color: green;
+            display: none;
+            margin: 30px auto;
+            width: 90%;
+        }
+        
+        .btn{
+            margin: 70px auto;
+            padding: 0px 45px;
+            display: block;
+            background: linear-gradient(blue,rgb(0, 47, 255),white);
+            color: rgb(0, 156, 0);
+            box-shadow: 0px 0px 20px rgb(8, 8, 253);
+            
+        }
+        .btn:hover{
+            background: linear-gradient(green,rgb(0, 255, 64),white);
+            color: rgb(38, 38, 255);
+            border-radius: 17px;
+            box-shadow: 0px 0px 20px green;
+            
+        }
+        .bye{
+            margin: 50px auto;
+            padding: 5px 15px;
+            color: chartreuse;
+            text-align: center;
+            background-color: black;
+            width: 50%;
+            font-size: 20px;
+            border: 2px solid chartreuse;
+            box-shadow: 0px 0px 40px rgb(77, 77, 77);
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="hd"><h1>GUESS - THE - COMPUTER'S - NUMBER - BTW - 1 TO 100</h1>
+    <button class="btt" onclick="bton()">DARK</button>
+    </div>
+
+
+    <button class="btn"><h1>play</h1></button>
+
+
+    <div class="scr"></div>
+
+
+    <div class="score"></div>
+
+
+
+    <div class="bye"></div>
+
+
+    <script>
+
+        let btn = document.querySelector('.btn');
+        
+        btn.addEventListener('click', evt);
+        
+        function evt() {
+            var a = Math.floor(Math.random() * 100) + 1;
+            var score = 100;
+            let inp;
+            do {
+                inp = prompt("Enter a number:");
+
+                if (inp == null) {
+                    alert("Goodbye!");
+                    document.querySelector('.score').style.display = "none";
+                    document.querySelector('.scr').style.display = `none`;
+                    document.querySelector('.bye').style.display = `block`;
+                    document.querySelector('.bye').innerHTML = `GOOD BYE !!, _ _ _see you again !`;
+                    break;
+                }
+
+                inp = Number.parseInt(inp);
+
+                if (isNaN(inp) || inp < 1 || inp > 100) {
+                    alert("Please enter a valid number between 1 and 100.");
+                    continue;
+                }
+                
+                score--;
+                
+                if (inp === a) {
+                    alert("Correct!");
+                    document.querySelector('.score').innerHTML = `<h1>Your score is: ${score}. You guessed the number in ${100 - score} attempts.</h1>`;
+                    document.querySelector('.score').style.display='block';
+                    document.querySelector('.scr').innerHTML = `<h2>computer guess : ${a}</h2>`;
+                    document.querySelector('.scr').style.display='block';
+                    break;
+                } else if (inp > a) {
+                    alert("Your number is bigger.");
+                } else {
+                    alert("Your number is smaller.");
+                }
+            } while (inp !== a);
+            
+        }
+
+        function bton() {
+            let body = document.querySelector('body');
+            let bton = document.querySelector('.btt');
+
+            if (body.style.backgroundColor != 'black') {
+             body.style.backgroundColor = 'black'
+            }
+            else{
+             body.style.backgroundColor = 'white'
+            }
+
+            if (bton.innerHTML !='LIGHT' ) {
+                bton.innerHTML ='LIGHT' 
+            }
+            else{
+                bton.innerHTML ='DARK';
+            }
+
+            if (bton.style.backgroundColor !='white') {
+                bton.style.backgroundColor ='white'
+            } else {
+                bton.style.backgroundColor ='black'
+            }
+        }
+        
+        </script>
+
+</body>
+
+</html>
